@@ -14,17 +14,19 @@ const Input = styled.input`
 `;
 
 const Name = () => {
-  const [firstName, setFirstName] = useInput('');
+  // const [firstName, setFirstName] = useInput('');
   // const [firstNameError, setFirstNameError] = useState(false)
   // const [firstNameDirty, setFirstNameDirty] = useState(false)
+  const firstName = useInput('')
   console.log(firstName);
   return (
     <>
       <Input
         type='text'
         placeholder='Ваше имя'
-        value={firstName}
-        onChange={(e) => setFirstName(e.target.value)}
+        value={firstName.value}
+        onChange={(e) => {firstName.onChange(e)}}
+        onBlur={(e) => firstName.onBlur(e)}
       />
       <Input type='text' placeholder='Ваша фамилия' />
     </>

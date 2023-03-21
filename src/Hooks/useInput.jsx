@@ -1,21 +1,21 @@
-import { useState } from "react"
+import { useState } from 'react';
 
 const useInput = (initialValue) => {
-  const [value, setValue] = useState(initialValue)
-  const [isDirty, setIsDirty] = useState(false)
+  const [value, setValue] = useState(initialValue);
+  const [isDirty, setIsDirty] = useState(false);
   const onChange = (e) => {
-    setValue(e.target.value)
-  }
+    setValue(e.target.value);
+  };
 
   const onBlur = (e) => {
-    setIsDirty(true)
-  }
+    setIsDirty(true);
+  };
 
   return {
-    value, 
+    value,
     onChange,
-    onBlur
-  }
-}
+    onBlur,
+  };
+};
 
-export default useInput
+export default useInput;
