@@ -14,18 +14,23 @@ const Input = styled.input`
 `;
 
 const Name = () => {
-  // const [firstName, setFirstName] = useInput('');
-  // const [firstNameError, setFirstNameError] = useState(false)
-  // const [firstNameDirty, setFirstNameDirty] = useState(false)
-  const firstName = useInput('')
-  console.log(firstName);
+  const firstName = useInput('', { isEmpty: true, minLength: 3 });
+
   return (
     <>
+      {firstName.isDirty && firstName.isEmpty && (
+        <div style={{ color: 'red' }}>Пустое поле</div>
+      )}
+      {firstName.isDirty && firstName.minLengthError && (
+        <div style={{ color: 'red' }}>Мало символов</div>
+      )}
       <Input
         type='text'
         placeholder='Ваше имя'
         value={firstName.value}
-        onChange={(e) => {firstName.onChange(e)}}
+        onChange={(e) => {
+          firstName.onChange(e);
+        }}
         onBlur={(e) => firstName.onBlur(e)}
       />
       <Input type='text' placeholder='Ваша фамилия' />
